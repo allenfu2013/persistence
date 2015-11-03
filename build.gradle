@@ -1,0 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories{
+    maven{ url 'http://maven.oschina.net/content/groups/public/'}
+    mavenCentral()
+}
+
+dependencies{
+    def spring = [
+            'org.springframework:spring-beans:3.0.5.RELEASE',
+            'org.springframework:spring-context:3.0.5.RELEASE',
+            'org.springframework:spring-core:3.0.5.RELEASE',
+            'org.springframework:spring-orm:3.0.5.RELEASE',
+            'org.springframework:spring-test:3.0.5.RELEASE',
+            'org.springframework:spring-ibatis:2.0.8'
+    ]
+
+    def apache = ["commons-logging:commons-logging:1.1.1",
+                  "commons-io:commons-io:2.0.1",
+                  "commons-dbcp:commons-dbcp:1.4",
+                  "commons-codec:commons-codec:1.5"]
+
+    def ibatis = ["org.apache.ibatis:ibatis-sqlmap:2.3.0"]
+
+    compile "mysql:mysql-connector-java:5.1.26"
+    compile "c3p0:c3p0:0.9.1.2", "cglib:cglib:2.2"
+    compile "com.google.code.gson:gson:1.7.1","com.google.guava:guava:13.0.1"
+
+    compile spring, apache, ibatis
+
+    testCompile('junit:junit:4.11')
+}
